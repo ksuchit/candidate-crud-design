@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import Test from "./Test";
 
 export default function Home() {
   const [state, setState] = useState({ gender: false, skills: [] });
@@ -45,6 +46,7 @@ export default function Home() {
   console.log(experience);
   return (
     <div className="container my-4">
+      <Test />
       <main>
         <div className="py-5 text-center">
           <h2>Add Candidate</h2>
@@ -87,7 +89,7 @@ export default function Home() {
                         className="form-check-input"
                         type="radio"
                         value="male"
-                        {...register("gender")}
+                        {...register("gender",{required:true})}
                       />
                       {/* onChange={()=>setState({gender:true,skills:state.skills})} */}
                       <label className="form-check-label">Male</label>
@@ -97,7 +99,7 @@ export default function Home() {
                         className="form-check-input"
                         type="radio"
                         value="female"
-                        {...register("gender")}
+                        {...register("gender",{required:true})}
                       />
                       <label className="form-check-label">Female</label>
                     </div>
@@ -106,7 +108,7 @@ export default function Home() {
                         className="form-check-input"
                         type="radio"
                         value="other"
-                        {...register("gender")}
+                        {...register("gender",{required:true})}
                       />
                       <label className="form-check-label">Other</label>
                     </div>
