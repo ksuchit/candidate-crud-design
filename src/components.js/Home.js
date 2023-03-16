@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Button, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import Test from "./Test";
+// import Debounce from "./Debounce";
 
 export default function Home() {
   const [state, setState] = useState({ gender: false, skills: [] });
   const [experience, setExperience] = useState([0, 1]);
-
+  console.log(experience)
   const {
     register,
     handleSubmit,
@@ -39,14 +39,14 @@ export default function Home() {
     console.log(index);
     if (experience.length > 2) {
       console.log("gret than 2");
-      console.log(experience.filter((item, i) => i !== index));
-      setExperience((prev) => prev.filter((item, i) => i !== index));
+      console.log(experience.filter((item, i) => item !== index));
+      setExperience((prev) => prev.filter((item, i) => item !== index));
     } else alert("minimum 2 Experience fields required");
   };
   console.log(experience);
   return (
     <div className="container my-4">
-      <Test />
+      {/* <Debounce /> */}
       <main>
         <div className="py-5 text-center">
           <h2>Add Candidate</h2>
@@ -274,11 +274,11 @@ export default function Home() {
                       <div className="card mx-3 mt-3" key={i}>
                         <div className="card-body">
                           <h6 className="card-title text-muted mb-3">
-                            Experience #{i + 1}
+                            Experience #{item}
                             <button
                               type="button"
                               className="float-end text-danger fw-normal btn btn-danger btn-sm text-white"
-                              onClick={() => onRemoveExperience(i)}
+                              onClick={() => onRemoveExperience(item)}
                             >
                               Remove
                             </button>
